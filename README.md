@@ -27,7 +27,12 @@ Demonstrate calling the method, passing in "young prince" as the argument.
 
 Write your code here:
 ```ruby
-# code here
+def offer_rose (person)
+  puts "Would oyu take this rose, #{person}"
+end
+
+offer_rose "young prince"
+
 ```
 
 ### Question 2
@@ -50,7 +55,11 @@ add her to the list of guests in the castle.
 
 Write your code here:
 ```ruby
-# code here
+
+resident_on_the_move = town.residents.slice(1)
+
+town.guests << resident_on_the_move
+
 ```
 
 ### Question 3
@@ -72,7 +81,11 @@ Belle is friends with Mrs. Potts
 
 Write your code here:
 ```ruby
-# code here
+friends.each do |friend|
+  puts "Belle is friends with #{friend}"
+end
+
+
 ```
 ## Ruby OOP (meets Lion King)
 
@@ -97,7 +110,28 @@ Each lion should have:
 Create a new lion instance with the name `simba`
 
 ```ruby
-# code here
+class Animal
+  attr_accesor :name
+  def initialize(name)
+    @name = name
+  end
+  def greet
+    puts "GRRRR"
+  end
+}
+pumba = Animal.new("Pumba")
+
+class Lion < Animal
+  def inintialize(name)
+    super(name)
+    @king = false
+    if @name == "Simba" do
+      @king = true
+    end
+  end
+end
+simba = Lion.new("Simba")
+
 ```
 
 ## SQL, Databases, and ActiveRecord (meets Aladdin)
@@ -114,7 +148,12 @@ entities (no need to draw an ERD):
 
 Your answer:
 ```
-Replace this with your answer
+an Entity Relationship Diagram alows us to create a visual diagram that shows data relationships. How tables will have attribues and can be connected to other tables.
+
+Genie has one lamp and belongs to one person
+Lamp can have one Genie and belongs to one person
+a Person can have many Lamps and Pets but only one Genie
+##Its been a long time since I watched that movie##
 ```
 
 ### Question 6
@@ -125,7 +164,15 @@ SQL database. If you need an example, you can use: people and wishes
 
 Your answer:
 ```
-Replace this with your answer
+CREATE TABLE persons (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255),
+);
+CREATE TABLE wishes (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    person_id INTEGER REFERENCES persons(id)
+);
 ```
 
 ### Question 7
@@ -148,14 +195,18 @@ Write ruby code that will create a person.
 
 Your answer:
 ```
-Replace this with your answer
+person = Person.create(name: "Neil", age: 42)
+
 ```
 
 Write ruby code that will query for any person that is 15 years of age
 
 Your answer:
 ```
-Replace this with your answer
+if person.age > 15 do
+  return true
+end
+
 ```
 
 ### Sinatra
@@ -164,5 +215,7 @@ Write a route in sinatra that will print "hello world" in the web browser at the
 
 Your answer:
 ```
-Replace this with your answer
+get '/oh_hello' do
+  return "hello world"
+end
 ```
