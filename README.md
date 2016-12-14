@@ -27,7 +27,12 @@ Demonstrate calling the method, passing in "young prince" as the argument.
 
 Write your code here:
 ```ruby
-# code here
+def offer_rose(person)
+    puts "Would you take this rose, #{person}, in exchange for giving " +
+         "an old beggar woman shelter from the bitter cold?"
+end
+
+offer_rose('young prince')
 ```
 
 ### Question 2
@@ -50,7 +55,19 @@ add her to the list of guests in the castle.
 
 Write your code here:
 ```ruby
-# code here
+
+town = {
+  residents: ["Maurice", "Belle", "Gaston"],
+  castle: {
+    num_rooms: 47,
+    residents: "Robby Benson",
+    guests: []
+  }
+}
+
+tmp = town[:residents].delete('Belle')
+town[:castle][:guests].push(tmp)
+
 ```
 
 ### Question 3
@@ -72,7 +89,10 @@ Belle is friends with Mrs. Potts
 
 Write your code here:
 ```ruby
-# code here
+
+friends = ["Chip Potts", "Cogsworth", "Lumière", "Mrs. Potts"]
+friends.each {|i| puts "Belle is friends with #{i}."}
+
 ```
 ## Ruby OOP (meets Lion King)
 
@@ -97,7 +117,46 @@ Each lion should have:
 Create a new lion instance with the name `simba`
 
 ```ruby
-# code here
+
+class Animal
+    def initialize(name)
+        @name = name.capitalize
+    end
+
+    attr_accessor :name
+
+    def greet
+        puts "Hello friend, my name is #{@name}"
+    end
+end
+
+class Lion < Animal
+  @@pack = []
+
+  def initialize(name)
+      @name = name.capitalize
+      if @name == 'Simba'
+        @king = true
+      else
+        @king = false
+      end
+      @@pack.push(self)
+  end
+
+  attr_accessor :name
+
+  def list_pack
+    return @@pack
+  end
+
+end
+
+pumba = Animal.new("Pumba")
+simba = Lion.new("simba")
+foo = Lion.new("foo")
+foo.list_pack
+
+
 ```
 
 ## SQL, Databases, and ActiveRecord (meets Aladdin)
@@ -114,7 +173,10 @@ entities (no need to draw an ERD):
 
 Your answer:
 ```
-Replace this with your answer
+An ERD is an entity relationship diagram and lays out the relationships of the
+entities. For example, a Person can have a Pet and a PET can have multiple Person
+owners, so its many to many. While a Genie has a one to one relationship with
+its Lamp.
 ```
 
 ### Question 6
@@ -125,7 +187,21 @@ SQL database. If you need an example, you can use: people and wishes
 
 Your answer:
 ```
-Replace this with your answer
+A schema is a representation of a record of data. In this example one Person can
+have multiple wishes.
+
+In SQL it would be something like:
+
+create table people (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255),
+);
+
+CREATE TABLE wishes (
+  id SERIAL PRIMARY KEY,
+  people_id INTEGER REFERENCES people(id)
+);
+
 ```
 
 ### Question 7
@@ -148,14 +224,18 @@ Write ruby code that will create a person.
 
 Your answer:
 ```
-Replace this with your answer
+
+rand = Person.new(name: "Rand", age: 22)
+
 ```
 
 Write ruby code that will query for any person that is 15 years of age
 
 Your answer:
 ```
-Replace this with your answer
+
+tmp = Person.where(age: 15)
+
 ```
 
 ### Sinatra
@@ -164,5 +244,10 @@ Write a route in sinatra that will print "hello world" in the web browser at the
 
 Your answer:
 ```
-Replace this with your answer
+
+get "/oh_hello" do
+  return "hello world"
+end
+
+
 ```
