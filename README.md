@@ -27,7 +27,12 @@ Demonstrate calling the method, passing in "young prince" as the argument.
 
 Write your code here:
 ```ruby
-# code here
+def offer_rose(person)
+  puts "Would you take this rose, #{person}, \
+       in exchange for giving an old beggar woman shelter from the bitter cold?"
+end
+
+offer_rose('young prince')
 ```
 
 ### Question 2
@@ -50,7 +55,7 @@ add her to the list of guests in the castle.
 
 Write your code here:
 ```ruby
-# code here
+town[:guests].push(town[:residents].pop)
 ```
 
 ### Question 3
@@ -72,7 +77,7 @@ Belle is friends with Mrs. Potts
 
 Write your code here:
 ```ruby
-# code here
+friends.each { |friend| puts "Belle is friends with #{friend}" }
 ```
 ## Ruby OOP (meets Lion King)
 
@@ -85,7 +90,22 @@ Each `Animal` should have:
 - a `greet` instance method
 - Getter and setter for `name`
 
+```ruby
+class Animal
+  attr_accessor :name
+  def initialize(name)
+    @name = name
+  end
+  def greet
+    puts "Hi, I'm #{@name}!"
+  end
+end
+```
+
 Create a new `Animal` instance with the name "Pumba"
+```ruby
+pumba = Animal.new('Pumba')
+```
 
 Make the `Lion` inherit from the `Animal` class.
 The `Lion` class should have a `pack` class variable that holds references to each instance created.
@@ -94,10 +114,21 @@ Each lion should have:
 - a `king` attribute which is a boolean
   - If the instance's `name` is `Simba` make the `king` attribute true
 
+```ruby
+class Lion < Animal
+  @@pack = []
+  def initialize(name)
+    super(name)
+    name == 'Simba' ? @king = true : @king = false
+    @@pack.push(self)
+  end
+end
+```
+
 Create a new lion instance with the name `simba`
 
 ```ruby
-# code here
+simba = Lion.new('Simba')
 ```
 
 ## SQL, Databases, and ActiveRecord (meets Aladdin)
@@ -114,7 +145,27 @@ entities (no need to draw an ERD):
 
 Your answer:
 ```
-Replace this with your answer
+An ERD displays the layout and relationships that objects and associated data
+is represented in an application.
+Genie:
+- name
+- current_form
+- wishes_granted
+- belongs_to Lamp
+Lamp:
+- has_one Genie
+- size
+- belongs_to Person
+Person:
+- name
+- age
+- has_one Lamp
+- has_many Pets
+Pet:
+- belongs_to Person
+- name
+- age
+- species
 ```
 
 ### Question 6
@@ -125,7 +176,19 @@ SQL database. If you need an example, you can use: people and wishes
 
 Your answer:
 ```
-Replace this with your answer
+A schema is like a blueprint for data that names fields and the kind of data accepted in those fields.
+In a one-to-many relationship, one enitity associates a singular record of one enitity with multiple
+records of another enitity typically using a primary key ID.
+Example:
+people
+id|name|age
+ 1+Jess+ 25
+
+wishes
+id|date_wished|person_id
+ 1+ 12/14/2016+    1  
+ 2+ 12/13/2016+    1
+ 3+ 12/12/2016+    1
 ```
 
 ### Question 7
@@ -147,15 +210,15 @@ CREATE TABLE persons(
 Write ruby code that will create a person.
 
 Your answer:
-```
-Replace this with your answer
+```ruby
+Person.create(name: 'Jesse', age: 25)
 ```
 
 Write ruby code that will query for any person that is 15 years of age
 
 Your answer:
-```
-Replace this with your answer
+```ruby
+Person.find_by(age: 25)
 ```
 
 ### Sinatra
@@ -164,5 +227,7 @@ Write a route in sinatra that will print "hello world" in the web browser at the
 
 Your answer:
 ```
-Replace this with your answer
+get '/oh_hello' do
+  return 'hello world'
+end
 ```
