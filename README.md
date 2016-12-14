@@ -27,7 +27,11 @@ Demonstrate calling the method, passing in "young prince" as the argument.
 
 Write your code here:
 ```ruby
-# code here
+def offer_rose (person)
+  puts "Would you take this rose, #{person}, in exchange for giving an old beggar woman shelter from the bitter cold?"
+end
+
+offer_rose ("young prince")
 ```
 
 ### Question 2
@@ -50,7 +54,8 @@ add her to the list of guests in the castle.
 
 Write your code here:
 ```ruby
-# code here
+town[:residents].delete("Belle")
+town[:castle][:guest] = ["Belle"]
 ```
 
 ### Question 3
@@ -72,7 +77,9 @@ Belle is friends with Mrs. Potts
 
 Write your code here:
 ```ruby
-# code here
+friends.each do |x|
+  puts "Belle is friends with #{x}"
+end
 ```
 ## Ruby OOP (meets Lion King)
 
@@ -97,7 +104,34 @@ Each lion should have:
 Create a new lion instance with the name `simba`
 
 ```ruby
-# code here
+class Animal
+  attr_accessor :name
+  def initialize(name)
+    @name = name
+  end
+
+  def greet
+    puts "My name is #{@name}"
+  end
+end
+
+pumba = Animal.new "pumba"
+
+class Lion < Animal
+  def initialize(name, pack, king)
+    super(name)
+    @pack = pack
+    @pack = []
+    @pack.push(self)
+    @king = king
+    if name == "simba"
+      @king = true
+    end
+  end
+end
+  def addPack
+    @pack.push(self)
+  end
 ```
 
 ## SQL, Databases, and ActiveRecord (meets Aladdin)
@@ -114,7 +148,7 @@ entities (no need to draw an ERD):
 
 Your answer:
 ```
-Replace this with your answer
+We use them to plan our model relationships and/or classes so that there is less confusion and more direction when we code them. they can also be used to plan our schemas,seed and migrations act as a guide for models
 ```
 
 ### Question 6
@@ -125,7 +159,22 @@ SQL database. If you need an example, you can use: people and wishes
 
 Your answer:
 ```
-Replace this with your answer
+a schema is a blueprint on how to create a certain item in a databse including properties and any foreign key associated. in this case sense wishes are the many they hold the foreign key in their table as person_id below
+
+create table person (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR,
+    age INT,
+    nationality VARCHAR
+  );
+
+  create table wishes (
+      id SERIAL PRIMARY KEY,
+      wish TEXT,
+      cost INT,
+      person_id INT
+    );
+
 ```
 
 ### Question 7
@@ -147,15 +196,17 @@ CREATE TABLE persons(
 Write ruby code that will create a person.
 
 Your answer:
-```
-Replace this with your answer
+```ruby
+def new
+  Person.create(name: "Rafael", age: 31)
+end
 ```
 
 Write ruby code that will query for any person that is 15 years of age
 
 Your answer:
-```
-Replace this with your answer
+```ruby
+ Person.find_by(age: 15)
 ```
 
 ### Sinatra
@@ -163,6 +214,10 @@ Replace this with your answer
 Write a route in sinatra that will print "hello world" in the web browser at the following URL: `http://localhost:4567/oh_hello`
 
 Your answer:
-```
-Replace this with your answer
+```ruby
+
+get "http://localhost:4567/oh_hello" do
+  puts "hello world"
+end
+
 ```
