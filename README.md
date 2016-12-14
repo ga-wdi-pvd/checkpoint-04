@@ -27,7 +27,13 @@ Demonstrate calling the method, passing in "young prince" as the argument.
 
 Write your code here:
 ```ruby
-# code here
+
+def offer_rose(person)
+  @person = person
+  puts "Would you take this rose, #{@person}, in exchange for giving an old beggar woman shelter from the bitter cold?"
+end
+
+
 ```
 
 ### Question 2
@@ -50,7 +56,14 @@ add her to the list of guests in the castle.
 
 Write your code here:
 ```ruby
-# code here
+
+
+# resident = @residents.select{|r| r== "Belle"}.to_s.push([:castle][:guests])
+# town[:residents][1].push(town[:castle][:guests])
+town.reject { |v| v = "Belle" }
+town[:residents].select("Belle").push(town[:castle][:guests]).to_s
+
+
 ```
 
 ### Question 3
@@ -72,7 +85,7 @@ Belle is friends with Mrs. Potts
 
 Write your code here:
 ```ruby
-# code here
+"#{@friends.sample} is friends with Chip Potts"
 ```
 ## Ruby OOP (meets Lion King)
 
