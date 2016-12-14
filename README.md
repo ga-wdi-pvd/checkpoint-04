@@ -27,7 +27,9 @@ Demonstrate calling the method, passing in "young prince" as the argument.
 
 Write your code here:
 ```ruby
-# code here
+def 'offer_rose' do
+
+end
 ```
 
 ### Question 2
@@ -50,7 +52,9 @@ add her to the list of guests in the castle.
 
 Write your code here:
 ```ruby
-# code here
+residents.delete = ["Belle"]
+guests.push["Belle"]
+end
 ```
 
 ### Question 3
@@ -72,7 +76,9 @@ Belle is friends with Mrs. Potts
 
 Write your code here:
 ```ruby
-# code here
+puts "Belle is friends wih #{friends.each}" + " " do
+
+end
 ```
 ## Ruby OOP (meets Lion King)
 
@@ -97,7 +103,10 @@ Each lion should have:
 Create a new lion instance with the name `simba`
 
 ```ruby
-# code here
+class Animal = {
+  attr_accessor :name
+
+}
 ```
 
 ## SQL, Databases, and ActiveRecord (meets Aladdin)
@@ -114,7 +123,8 @@ entities (no need to draw an ERD):
 
 Your answer:
 ```
-Replace this with your answer
+An ERD is a tree or a path, we create them to visually see how the user may interact with our application. Out of the given list
+it would start with a 'Person' who finds a 'Lamp' containing a 'Genie' that can grant wishes, one may be a wish for a 'Pet'. That would be our ERD.
 ```
 
 ### Question 6
@@ -125,7 +135,7 @@ SQL database. If you need an example, you can use: people and wishes
 
 Your answer:
 ```
-Replace this with your answer
+a schema is a collection of database objects. an  example of one-to-many would be class and students.
 ```
 
 ### Question 7
@@ -148,7 +158,9 @@ Write ruby code that will create a person.
 
 Your answer:
 ```
-Replace this with your answer
+def person
+
+end
 ```
 
 Write ruby code that will query for any person that is 15 years of age
@@ -163,6 +175,8 @@ Replace this with your answer
 Write a route in sinatra that will print "hello world" in the web browser at the following URL: `http://localhost:4567/oh_hello`
 
 Your answer:
-```
-Replace this with your answer
+get "/" do
+@greeting = "hello world"
+erb:greeting
+end
 ```
