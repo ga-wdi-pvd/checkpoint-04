@@ -27,7 +27,11 @@ Demonstrate calling the method, passing in "young prince" as the argument.
 
 Write your code here:
 ```ruby
-# code here
+person = "young prince"
+
+def offer_rose(person)
+  puts "Would you take this rose, {@person}, in exchange for giving an old beggar woman shelter?"
+end
 ```
 
 ### Question 2
@@ -50,7 +54,19 @@ add her to the list of guests in the castle.
 
 Write your code here:
 ```ruby
-# code here
+town = {
+  residents: ["Maurice", "Belle", "Gaston"],
+  castle: {
+    num_rooms: 47,
+    residents: "Robby Benson",
+    guests: []
+  }
+}
+
+
+puts Array.residents.pop["Belle"]
+
+(This does nothing yet, will get back to this code)
 ```
 
 ### Question 3
@@ -72,7 +88,13 @@ Belle is friends with Mrs. Potts
 
 Write your code here:
 ```ruby
-# code here
+friends = ["Chip Potts", "Cogsworth", "Lumire", "Mrs. Potts"] "Mrs. Potts"]
+friends.each
+array.each do |i|
+  puts "Belle is friends with #{i}"
+  end
+
+  (It works!)
 ```
 ## Ruby OOP (meets Lion King)
 
@@ -164,5 +186,11 @@ Write a route in sinatra that will print "hello world" in the web browser at the
 
 Your answer:
 ```
-Replace this with your answer
+require sinatra
+require sinatra/reloader
+
+get '/oh_hello' do
+ "Hello world"
+end
+
 ```
