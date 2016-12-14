@@ -28,6 +28,11 @@ Demonstrate calling the method, passing in "young prince" as the argument.
 Write your code here:
 ```ruby
 # code here
+def offer_rose(person)
+  puts "Would you take this rose, #{person}, in exchange for giving an old beggar woman shelter from the bitter cold?"
+end
+
+offer_rose("young prince")
 ```
 
 ### Question 2
@@ -51,6 +56,7 @@ add her to the list of guests in the castle.
 Write your code here:
 ```ruby
 # code here
+town[:residents].delete_at(1)
 ```
 
 ### Question 3
@@ -73,6 +79,9 @@ Belle is friends with Mrs. Potts
 Write your code here:
 ```ruby
 # code here
+friends.each do |friend|
+  puts "Belle is friends with #{friend}"
+end
 ```
 ## Ruby OOP (meets Lion King)
 
@@ -98,6 +107,30 @@ Create a new lion instance with the name `simba`
 
 ```ruby
 # code here
+class Animal
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  def greet
+    "Hello #{@name}"
+  end
+end
+
+class Lion < Animal
+  attr_accessor :name, :king
+
+  def initialize(name)
+    @name = name
+    if name == "simba" || name == "Simba"
+      @king = true
+    else
+      @king = false
+  end
+
+end
 ```
 
 ## SQL, Databases, and ActiveRecord (meets Aladdin)
@@ -114,7 +147,39 @@ entities (no need to draw an ERD):
 
 Your answer:
 ```
-Replace this with your answer
+An Entity Relationship Diagram helps us to specify information about a specific entity and how it relates to other entities.
+
+Helps us model our databases to represent real life objects.
+
+Genie
+Has 1 person and 1 Lamp
+Has name
+Has age
+Has Powers
+Is Free?
+
+Lamp
+Has 1 Genie
+Found?
+Rubbed?
+Has Color
+Has Genie?
+
+
+Person
+Has 0, 1, or many pets
+Has name
+Has age
+Has genie?
+Has lamp?
+
+
+Pet
+has one Person
+Has name
+Has age
+Num Legs
+
 ```
 
 ### Question 6
@@ -125,7 +190,23 @@ SQL database. If you need an example, you can use: people and wishes
 
 Your answer:
 ```
-Replace this with your answer
+A schema is how you want to represent your data in tables and what datatype will hold it.
+
+For example
+create table artists (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255),
+  photo_url VARCHAR(512),
+  nationality VARCHAR(255)
+);
+
+CREATE TABLE songs (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255),
+  album VARCHAR(255),
+  preview_url VARCHAR(512),
+  artist_id INTEGER REFERENCES artists(id)
+);
 ```
 
 ### Question 7
@@ -149,6 +230,7 @@ Write ruby code that will create a person.
 Your answer:
 ```
 Replace this with your answer
+@person = Person.create(name: params[:name], age: params[:age])
 ```
 
 Write ruby code that will query for any person that is 15 years of age
@@ -156,6 +238,9 @@ Write ruby code that will query for any person that is 15 years of age
 Your answer:
 ```
 Replace this with your answer
+SELECT * FROM persons WHERE age = 15  === sql
+
+Person.find(params[:age]) == Ruby
 ```
 
 ### Sinatra
@@ -164,5 +249,7 @@ Write a route in sinatra that will print "hello world" in the web browser at the
 
 Your answer:
 ```
-Replace this with your answer
+get '/oh_hello'
+  "<h1>hello world</h1>"
+end
 ```
