@@ -27,7 +27,9 @@ Demonstrate calling the method, passing in "young prince" as the argument.
 
 Write your code here:
 ```ruby
-# code here
+def offer_rose (person)
+  puts "Would you take this rose, #{person}, in exchange for giving an old beggar woman shelter from the bitter cold?"
+end
 ```
 
 ### Question 2
@@ -50,7 +52,7 @@ add her to the list of guests in the castle.
 
 Write your code here:
 ```ruby
-# code here
+town[:castle][:guests] << town[:residents].delete('Belle')
 ```
 
 ### Question 3
@@ -72,7 +74,9 @@ Belle is friends with Mrs. Potts
 
 Write your code here:
 ```ruby
-# code here
+friends.each do |name|
+  puts "Belle is friends with #{name}"
+end
 ```
 ## Ruby OOP (meets Lion King)
 
@@ -85,7 +89,28 @@ Each `Animal` should have:
 - a `greet` instance method
 - Getter and setter for `name`
 
+```ruby
+class Animal
+
+  attr_accessor :name :greet
+
+  def initialize(name, greet)
+    @name = name
+    @greet = greet
+  end
+
+  def greeting
+    puts "#{@greet}"
+  end
+
+end
+```
+
 Create a new `Animal` instance with the name "Pumba"
+
+```ruby
+pumba = Animal.new("Pumba", "Hakuna Matata")
+```
 
 Make the `Lion` inherit from the `Animal` class.
 The `Lion` class should have a `pack` class variable that holds references to each instance created.
@@ -97,7 +122,17 @@ Each lion should have:
 Create a new lion instance with the name `simba`
 
 ```ruby
-# code here
+class Lion < Animal
+
+    def initialize(name, greet, king)
+        super(name, greet)
+        @king = false
+        if @name == "Simba"
+          @king = true
+        end
+    end
+end
+
 ```
 
 ## SQL, Databases, and ActiveRecord (meets Aladdin)
@@ -114,7 +149,11 @@ entities (no need to draw an ERD):
 
 Your answer:
 ```
-Replace this with your answer
+ERD's are essentially the pages of your web app, each ERD can hold content that gets applied to your web template.
+
+An example of Genie's attributes would be Master/#WishesRemaining.
+Genie would have a 1 to only 1 relationship to Lamp.
+Genie would have a 1 to many relationship with Person.
 ```
 
 ### Question 6
@@ -125,7 +164,7 @@ SQL database. If you need an example, you can use: people and wishes
 
 Your answer:
 ```
-Replace this with your answer
+A schema is the template of our tables, it organizes the entities and their attributes and allows us to apply their relationships to other entities/tables. a one-to-many relationship would be represented by associated columns e.g Person id = 1, each row wil have a different number, in the Genie table there will be an associated column "person_id" which can represented multiple times for multiple wishes, if organized that way. 
 ```
 
 ### Question 7
@@ -148,14 +187,14 @@ Write ruby code that will create a person.
 
 Your answer:
 ```
-Replace this with your answer
+dara = Person.new(:id(#), :name("Dara"), :age(#) )
 ```
 
 Write ruby code that will query for any person that is 15 years of age
 
 Your answer:
 ```
-Replace this with your answer
+Person.find(:age < 15)
 ```
 
 ### Sinatra
@@ -164,5 +203,8 @@ Write a route in sinatra that will print "hello world" in the web browser at the
 
 Your answer:
 ```
-Replace this with your answer
+get '/oh_hello'
+  puts "hello world"
+  erb :/oh_hello
+end
 ```
