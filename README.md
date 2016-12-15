@@ -104,6 +104,7 @@ Create a new lion instance with the name `simba`
 
 ```ruby
 class Animal(name)
+
   attr_accessor :name
 
   def initialize(name)
@@ -121,6 +122,10 @@ class Lion < Animal
   def initialize(name)
     super(name)
     @@pack << self
+    @king = false
+    if name == "Simba"
+      @king = true
+    end
   end
 
   def is_king(name)
