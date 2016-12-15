@@ -27,7 +27,12 @@ Demonstrate calling the method, passing in "young prince" as the argument.
 
 Write your code here:
 ```ruby
-# code here
+def offer_rose(person)
+  puts "Would you take this rose, #{person}, in exchange for giving an old beggar
+        woman shelter from the bitter cold?"
+end
+
+offer_rose("young prince")
 ```
 
 ### Question 2
@@ -50,7 +55,8 @@ add her to the list of guests in the castle.
 
 Write your code here:
 ```ruby
-# code here
+town[:residents].delete("Belle")
+town[:castle][:guests] << "Belle"
 ```
 
 ### Question 3
@@ -72,7 +78,7 @@ Belle is friends with Mrs. Potts
 
 Write your code here:
 ```ruby
-# code here
+friends.each {|friend| puts "Belle is friends with #{friend}"}
 ```
 ## Ruby OOP (meets Lion King)
 
@@ -97,7 +103,41 @@ Each lion should have:
 Create a new lion instance with the name `simba`
 
 ```ruby
-# code here
+class Animal(name)
+
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  def greet
+    puts "Hello, I'm #{name}!"
+  end
+end
+
+class Lion < Animal
+  @@pack = []
+
+  def initialize(name)
+    super(name)
+    @@pack << self
+    @king = false
+    if name == "Simba"
+      @king = true
+    end
+  end
+
+  def is_king(name)
+    name == "Simba"
+  end
+end
+
+
+pumba = Animal.new("Pumba")
+
+simba = Lion.new("Simba")
+
 ```
 
 ## SQL, Databases, and ActiveRecord (meets Aladdin)
@@ -114,7 +154,17 @@ entities (no need to draw an ERD):
 
 Your answer:
 ```
-Replace this with your answer
+An erd is an entity relationship diagram that shows connections between objects. We use them when creating applications so we can have the correct attributes in each object and to show the relationships between objects (one to many, one to one, many to many).
+
+One LAMP to One GENIE
+One PERSON to One LAMP
+One PERSON to Many PETS
+ONE GENIE to Many PERSON
+
+Pet - name, species, age
+Person - name, age
+Genie - name, specialty, wishes
+Lamp - color, size
 ```
 
 ### Question 6
@@ -125,7 +175,7 @@ SQL database. If you need an example, you can use: people and wishes
 
 Your answer:
 ```
-Replace this with your answer
+A schema is used to create an "erd" for a database. The wishes schema would have an attribute that would hold the person making the wishes id. person_id
 ```
 
 ### Question 7
